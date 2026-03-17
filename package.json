@@ -5,15 +5,18 @@
   "dependencies": {
     "@cap-js/hana": "^2",
     "@sap/cds": "^9",
-    "express": "^4",
-    "@sap/xssec": "^4"
+    "@sap/xssec": "^4",
+    "express": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
-    "@sap/cds-dk": "^9"
+    "@sap/cds-dk": "^9",
+    "cds-launchpad-plugin": "^2.2.0",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-incidents": "cds watch --open ns.incidents/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "cds": {
     "requires": {
@@ -35,10 +38,10 @@
         }
       },
       "[production]": {
-        "db": "hana", 
+        "db": "hana",
         "auth": {
-            "kind": "xsuaa",
-            "restrict_all_services": false
+          "kind": "xsuaa",
+          "restrict_all_services": false
         }
       }
     },
@@ -46,5 +49,11 @@
       "index": true
     }
   },
-  "private": true
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/incidents"
+  ]
 }
