@@ -43,7 +43,10 @@
           "kind": "xsuaa",
           "restrict_all_services": false
         }
-      }
+      },
+      "destinations": true,
+      "html5-repo": true,
+      "workzone": true
     },
     "server": {
       "index": true

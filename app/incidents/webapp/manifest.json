@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/processor/",
+        "uri": "odata/v4/processor/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -36,10 +36,10 @@
           },
           "title": "Incidents",
           "subTitle": "Incident App",
-          "icon": "sap-icon://course-book"          
+          "icon": "sap-icon://course-book"
         }
       }
-    }    
+    }
   },
   "sap.ui": {
     "technology": "UI5",
@@ -168,5 +168,9 @@
     "app": {
       "enableLazyLoading": true
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "incidentmanagement.service"
   }
 }
