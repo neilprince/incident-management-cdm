@@ -42,6 +42,7 @@ modules:
     path: gen
     requires:
       - name: incident-management-auth
+      - name: incident-management-destination
       - name: srv-api
       - name: incident-management-html5-repo-host
         parameters:
@@ -55,6 +56,18 @@ modules:
           artifacts:
             - incidents.zip
           target-path: app/
+        - name: incident-management-workzone-cdm
+          artifacts:
+            - cdm.json
+          target-path: app/          
+
+  - name: incident-management-workzone-cdm
+    type: html5
+    path: workzone
+    build-parameters:
+      build-result: .
+      supported-platforms:
+        []
 
   - name: incidentmanagementincidents
     type: html5
@@ -75,6 +88,10 @@ modules:
         parameters:
           service-key:
             name: incident-management-auth-key
+      - name: incident-management-html5-repo-runtime
+        parameters:
+          service-key: 
+            name: incident-management-html5-repo-runtime-service-key
       - name: incident-management-html5-repo-host
         parameters:
           service-key:
@@ -87,6 +104,13 @@ modules:
       no-source: true
     parameters:
       content:
+        subaccount:
+          existing_destinations_policy: update
+          destinations:
+          - Name: incident-management-cdm
+            ServiceInstanceName: incident-management-html5-repo-runtime
+            ServiceKeyName: incident-management-html5-repo-runtime-service-key
+            URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/incidentmanagement.service      
         instance:
           existing_destinations_policy: update
           destinations:
@@ -136,6 +160,15 @@ resources:
       config:
         HTML5Runtime_enabled: true
         init_data:
+          subaccount:
+            existing_destinations_policy: update
+            destinations:
+            - Name: incident-management-rt
+              Authentication: NoAuthentication
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://559f7496trial.launchpad.cfapps.us10.hana.ondemand.com
+              CEP.HTML5contentprovider: true
           instance:
             existing_destinations_policy: update
             destinations:
@@ -154,3 +187,8 @@ resources:
     parameters:
       service: html5-apps-repo
       service-plan: app-host
+  - name: incident-management-html5-repo-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime      
