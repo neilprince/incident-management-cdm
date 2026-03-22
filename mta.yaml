@@ -11,6 +11,10 @@ build-parameters:
       commands:
         - npm ci
         - npx cds build --production
+  after-all:
+    - builder: custom
+      commands:
+        - npx rimraf app/incidents/dist        
 modules:
   - name: incident-management-srv
     type: nodejs
@@ -63,8 +67,9 @@ modules:
       build-result: dist
       builder: custom
       commands:
-        - npm ci
-        - npm run build
+        - npx ui5 build --config=ui5.yaml --clean-dest --dest dist
+#        - npm ci
+#        - npm run build
       supported-platforms:
         []
 
