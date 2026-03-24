@@ -14,7 +14,7 @@ build-parameters:
   after-all:
     - builder: custom
       commands:
-        - npx rimraf app/incidents/dist        
+        - npx rimraf app/incidents/dist
 modules:
   - name: incident-management-srv
     type: nodejs
@@ -63,7 +63,7 @@ modules:
         - name: incident-management-workzone-cdm
           artifacts:
             - cdm.json
-          target-path: app/          
+          target-path: app/
 
   - name: incident-management-workzone-cdm
     type: html5
@@ -95,7 +95,7 @@ modules:
             name: incident-management-auth-key
       - name: incident-management-html5-repo-runtime
         parameters:
-          service-key: 
+          service-key:
             name: incident-management-html5-repo-runtime-service-key
       - name: incident-management-html5-repo-host
         parameters:
@@ -115,7 +115,7 @@ modules:
           - Name: incident-management-cdm
             ServiceInstanceName: incident-management-html5-repo-runtime
             ServiceKeyName: incident-management-html5-repo-runtime-service-key
-            URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/incidentmanagement.service      
+            URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/incidentmanagement.service
         instance:
           existing_destinations_policy: update
           destinations:
@@ -168,12 +168,12 @@ resources:
           subaccount:
             existing_destinations_policy: update
             destinations:
-            - Name: incident-management-rt
-              Authentication: NoAuthentication
-              ProxyType: Internet
-              Type: HTTP
-              URL: https://559f7496trial.launchpad.cfapps.us10.hana.ondemand.com
-              CEP.HTML5contentprovider: true
+              - Name: incident-management-rt
+                Authentication: NoAuthentication
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://559f7496trial.launchpad.cfapps.us10.hana.ondemand.com
+                CEP.HTML5contentprovider: true
           instance:
             existing_destinations_policy: update
             destinations:
@@ -196,4 +196,4 @@ resources:
     type: org.cloudfoundry.managed-service
     parameters:
       service: html5-apps-repo
-      service-plan: app-runtime      
+      service-plan: app-runtime

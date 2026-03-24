@@ -1,6 +1,7 @@
 # Getting Started
 
-Welcome to your new project.
+Welcome to your new project. This is based on the following tutorial:
+https://developers.sap.com/group.cap-application-full-stack.html
 
 It contains these folders and files, following our recommended project layout:
 
