@@ -1,7 +1,7 @@
 {
-  "name": "customers",
+  "name": "urgency",
   "version": "0.0.1",
-  "description": "Customer",
+  "description": "Urgency Codes",
   "keywords": [
     "ui5",
     "openui5",
@@ -15,8 +15,6 @@
     "ui5-task-zipper": "^3"
   },
   "scripts": {
-    "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
-    "build": "ui5 build preload --clean-dest",
-    "start": "ui5 serve"
+    "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
   }
 }

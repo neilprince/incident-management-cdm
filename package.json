@@ -17,7 +17,8 @@
   "scripts": {
     "start": "cds-serve",
     "watch-incidents": "cds watch --open ns.incidents/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "watch-customers": "cds watch --open ns.customers/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-customers": "cds watch --open ns.customers/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-urgency": "cds watch --open ns.urgency/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "cds": {
     "requires": {
@@ -59,6 +60,7 @@
   ],
   "sapux": [
     "app/incidents",
-    "app/customers"
+    "app/customers",
+    "app/urgency"
   ]
 }

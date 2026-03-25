@@ -15,6 +15,8 @@ build-parameters:
     - builder: custom
       commands:
         - npx rimraf app/incidents/dist
+        - npx rimraf app/customers/dist
+        - npx rimraf app/urgency/dist
 modules:
   - name: incident-management-srv
     type: nodejs
@@ -41,6 +43,43 @@ modules:
     requires:
       - name: incident-management-db
 
+# Fiori Element Applications
+
+  - name: incidentmanagementincidents
+    type: html5
+    path: app/incidents
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npx ui5 build --config=ui5.yaml --clean-dest --dest dist
+      supported-platforms:
+        []
+
+  - name: incidentmanagementcustomers
+    type: html5
+    path: app/customers
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npx ui5 build --config=ui5.yaml --clean-dest --dest dist
+      supported-platforms:
+        []
+
+  - name: incidentmanagementurgency
+    type: html5
+    path: app/urgency
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npx ui5 build --config=ui5.yaml --clean-dest --dest dist
+      supported-platforms:
+        []        
+
+# Application Deployer
+
   - name: incident-management-app-deployer
     type: com.sap.application.content
     path: gen
@@ -64,6 +103,14 @@ modules:
           artifacts:
             - cdm.json
           target-path: app/
+        - name: incidentmanagementcustomers
+          artifacts:
+            - customers.zip
+          target-path: app/
+        - name: incidentmanagementurgency
+          artifacts:
+            - urgency.zip
+          target-path: app/          
 
   - name: incident-management-workzone-cdm
     type: html5
@@ -73,18 +120,7 @@ modules:
       supported-platforms:
         []
 
-  - name: incidentmanagementincidents
-    type: html5
-    path: app/incidents
-    build-parameters:
-      build-result: dist
-      builder: custom
-      commands:
-        - npx ui5 build --config=ui5.yaml --clean-dest --dest dist
-#        - npm ci
-#        - npm run build
-      supported-platforms:
-        []
+
 
   - name: incident-management-destinations
     type: com.sap.application.content
@@ -112,10 +148,10 @@ modules:
         subaccount:
           existing_destinations_policy: update
           destinations:
-          - Name: incident-management-cdm
-            ServiceInstanceName: incident-management-html5-repo-runtime
-            ServiceKeyName: incident-management-html5-repo-runtime-service-key
-            URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/incidentmanagement.service
+            - Name: incident-management-cdm
+              ServiceInstanceName: incident-management-html5-repo-runtime
+              ServiceKeyName: incident-management-html5-repo-runtime-service-key
+              URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/incidentmanagement.service
         instance:
           existing_destinations_policy: update
           destinations:
@@ -128,6 +164,8 @@ modules:
               ServiceInstanceName: incident-management-auth
               ServiceKeyName: incident-management-auth-key
               sap.cloud.service: incidentmanagement.service
+
+
 
 resources:
   - name: incident-management-auth

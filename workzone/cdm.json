@@ -1,27 +1,35 @@
 [
     {
-    "_version": "3.0",
-    "identification": {
-        "id": "defaultCatalogId",
-        "title": "{{title}}",
-        "entityType": "catalog"
-    },
-    "payload": {
-        "viz": [
-        {
-            "appId": "ns.incidents",
-            "vizId": "incidents-display"
-        }
+        "_version": "3.0",
+        "identification": {
+            "id": "defaultCatalogId",
+            "title": "{{title}}",
+            "entityType": "catalog"
+        },
+        "payload": {
+            "viz": [
+                {
+                    "appId": "ns.incidents",
+                    "vizId": "incidents-display"
+                },
+                {
+                    "appId": "ns.customers",
+                    "vizId": "customers-display"
+                },
+                {
+                    "appId": "ns.urgency",
+                    "vizId": "urgency-display"
+                }
+            ]
+        },
+        "texts": [
+            {
+                "locale": "",
+                "textDictionary": {
+                    "title": "Default Catalog Title"
+                }
+            }
         ]
-    },
-    "texts": [
-        {
-        "locale": "",
-        "textDictionary": {
-            "title": "Default Catalog Title"
-        }
-        }
-    ]
     },
     {
     "_version": "3.0",
@@ -32,10 +40,18 @@
     },
     "payload": {
         "viz": [
-        {
-            "appId": "ns.incidents",
-            "vizId": "incidents-display"
-        }
+            {
+                "appId": "ns.incidents",
+                "vizId": "incidents-display"
+            },
+            {
+                "appId": "ns.customers",
+                "vizId": "customers-display"
+            },
+            {
+                "appId": "ns.urgency",
+                "vizId": "urgency-display"
+            }
         ]
     },
     "texts": [
@@ -58,7 +74,13 @@
         "apps": [
         {
             "id": "ns.incidents"
-        }
+        },
+        {
+            "id": "ns.customers"
+        },
+        {
+            "id": "ns.urgency"
+        }               
         ],
         "catalogs": [
         {

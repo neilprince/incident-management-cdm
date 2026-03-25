@@ -1,7 +1,7 @@
 {
   "_version": "1.81.0",
   "sap.app": {
-    "id": "ns.customers",
+    "id": "ns.urgency",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.20.2",
-      "toolsId": "c4b0e158-6f2d-4c58-9b46-7f331ab23ff1"
+      "toolsId": "1d235273-bebb-4a8e-887f-88af2aebb024"
     },
     "dataSources": {
       "mainService": {
@@ -27,12 +27,11 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "customers-display": {
-          "semanticObject": "customers",
+        "urgency-display": {
+          "semanticObject": "urgency",
           "action": "display",
-          "title": "{{customers-display.flpTitle}}",
-          "subTitle": "{{customers-display.flpSubtitle}}",
-          "icon": "sap-icon://customer",
+          "title": "{{urgency-display.flpTitle}}",
+          "subTitle": "{{urgency-display.flpSubtitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -75,7 +74,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "ns.customers.i18n.i18n"
+          "bundleName": "ns.urgency.i18n.i18n"
         }
       },
       "": {
@@ -100,36 +99,20 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "CustomersList",
-          "target": "CustomersList"
-        },
-        {
-          "pattern": "Customers({key}):?query:",
-          "name": "CustomersObjectPage",
-          "target": "CustomersObjectPage"
-        },
-        {
-          "pattern": "Customers({key})/incidents({key2}):?query:",
-          "name": "IncidentsObjectPage",
-          "target": "IncidentsObjectPage"
+          "name": "UrgencyList",
+          "target": "UrgencyList"
         }
       ],
       "targets": {
-        "CustomersList": {
+        "UrgencyList": {
           "type": "Component",
-          "id": "CustomersList",
+          "id": "UrgencyList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/Customers",
+              "contextPath": "/Urgency",
               "variantManagement": "Page",
-              "navigation": {
-                "Customers": {
-                  "detail": {
-                    "route": "CustomersObjectPage"
-                  }
-                }
-              },
+              "navigation": {},
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
@@ -138,35 +121,6 @@
                 }
               },
               "initialLoad": "Enabled"
-            }
-          }
-        },
-        "CustomersObjectPage": {
-          "type": "Component",
-          "id": "CustomersObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/Customers",
-              "navigation": {
-                "incidents": {
-                  "detail": {
-                    "route": "IncidentsObjectPage"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "IncidentsObjectPage": {
-          "type": "Component",
-          "id": "IncidentsObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/Customers/incidents"
             }
           }
         }
