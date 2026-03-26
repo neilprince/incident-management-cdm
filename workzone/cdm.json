@@ -1,45 +1,34 @@
 [
-    {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultCatalogId",
-            "title": "{{title}}",
-            "entityType": "catalog"
-        },
-        "payload": {
-            "viz": [
-                {
-                    "appId": "ns.incidents",
-                    "vizId": "incidents-display"
-                },
-                {
-                    "appId": "ns.customers",
-                    "vizId": "customers-display"
-                },
-                {
-                    "appId": "ns.urgency",
-                    "vizId": "urgency-display"
-                }
-            ]
-        },
-        "texts": [
-            {
-                "locale": "",
-                "textDictionary": {
-                    "title": "Default Catalog Title"
-                }
-            }
-        ]
-    },
-    {
-    "_version": "3.0",
+  {
+    "_version": "3.2",
     "identification": {
-        "id": "defaultGroupId",
-        "title": "{{title}}",
-        "entityType": "group"
+      "id": "incidentRole",
+      "entityType": "role",
+      "title": "Incident Role"
     },
     "payload": {
-        "viz": [
+        "spaces": [
+            { "id": "incidentSpace" }
+        ],
+        "apps": [
+            { "id": "ns.incidents" },
+            { "id": "ns.customers" },
+            { "id": "ns.urgency" }
+        ],
+        "catalogs": [
+         { "id": "incidentCatalogId" }
+      ]
+    }
+  },
+  {
+    "_version": "3.2",
+      "identification": {
+        "id": "incidentCatalogId",
+        "title": "{{title}}",
+        "entityType": "catalog"
+      },
+      "payload": {
+         "viz": [
             {
                 "appId": "ns.incidents",
                 "vizId": "incidents-display"
@@ -56,42 +45,238 @@
     },
     "texts": [
         {
-        "locale": "",
-        "textDictionary": {
-            "title": "Business Apps"
-        }
+            "locale": "",
+            "textDictionary": {
+                "title": "Incident Catalog"
+            }
         }
     ]
-    },
-    {
-    "_version": "3.0",
+  },  
+{
+    "_version": "3.2",
     "identification": {
-        "id": "defaultRole",
-        "entityType": "role",
-        "title": "Default Role"
+        "id": "incidentSpace",
+        "title": "{{title}}",
+        "description": "{{description}}",
+        "entityType": "space"
     },
     "payload": {
-        "apps": [
-        {
-            "id": "ns.incidents"
-        },
-        {
-            "id": "ns.customers"
-        },
-        {
-            "id": "ns.urgency"
-        }               
-        ],
-        "catalogs": [
-        {
-            "id": "defaultCatalogId"
-        }
-        ],
-        "groups": [
-        {
-            "id": "defaultGroupId"
-        }
+        "contentNodes": [
+            {
+                "type": "workpage",
+                "id": "incidentWorkpage"
+            },
+            {
+                "type": "workpage",
+                "id": "masterDataWorkpage"
+            }
         ]
-    }
+    },
+    "texts": [
+        {
+            "locale": "en",
+            "textDictionary": {
+                "title": "Incident Management",
+                "description": "Incident Management"
+            }
+        },
+        {
+            "locale": "",
+            "textDictionary": {
+                "title": "Incident Management",
+                "description": "Incident Management"
+            }
+        }
+      ]
+    },
+    {
+      "_version": "3.2",
+      "identification": {
+        "id": "incidentWorkpage",
+        "entityType": "workpage",
+        "title": "{{title}}",
+        "description": "{{description}}"
+      },
+      "payload": {
+        "workpageConfig": {
+          "title": "{{title}}"
+        },
+        "rows": [
+          {
+            "id": "row-1",
+            "rowConfig": {
+                "title": "{{row1Title}}"
+            },
+            "columns": [
+              {
+                "id": "col-11",
+                "columnConfig": {
+                  "columnWidth": 8
+                },
+                "cells": [
+                  {
+                    "id": "cell-111",
+                    "cellConfig": {},
+                    "widgets": [
+                      {
+                        "id": "widg-1111",
+                        "viz": {
+                          "appId": "ns.incidents",
+                          "vizId": "incidents-display"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "row-2",
+            "rowConfig": {
+                "title": "{{row2Title}}"
+            },
+            "columns": [
+              {
+                "id": "col-21",
+                "columnConfig": {
+                  "columnWidth": 8
+                },
+                "cells": [
+                  {
+                    "id": "cell-211",
+                    "cellConfig": {},
+                    "widgets": [
+                      {
+                        "id": "widg-2111",
+                        "viz": {
+                          "appId": "ns.customers",
+                          "vizId": "customers-display"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }          
+        ]
+      },
+      "texts": [
+        {
+          "locale": "en",
+          "textDictionary": {
+            "title": "Incidents",
+            "description": "Incidents",
+            "row1Title": "Incident Tools",
+            "row2Title": "Customer Tools"
+          }
+        },
+        {
+          "locale": "de",
+          "textDictionary": {
+            "title": "German Incidents",
+            "description": "German Incidents",
+            "row1Title": "German Incident Tools",
+            "row2Title": "German Customer Tools"
+          }
+        },        
+        {
+          "locale": "",
+          "textDictionary": {
+            "title": "Incidents",
+            "description": "Incidents",
+            "row1Title": "Incident Tools",
+            "row2Title": "Customer Tools"
+          }
+        }
+      ]
+    },
+    {
+      "_version": "3.2",
+      "identification": {
+        "id": "masterDataWorkpage",
+        "entityType": "workpage",
+        "title": "{{title}}",
+        "description": "{{description}}"
+      },
+      "payload": {
+        "workpageConfig": {
+          "title": "{{title}}"
+        },
+        "rows": [
+          {
+            "id": "row-1",
+            "rowConfig": {
+                "title": "{{row1Title}}"
+            },
+            "columns": [
+              {
+                "id": "col-11",
+                "columnConfig": {
+                  "columnWidth": 8
+                },
+                "cells": [
+                  {
+                    "id": "cell-111",
+                    "cellConfig": {},
+                    "widgets": [
+                      {
+                        "id": "widg-1111",
+                        "viz": {
+                          "appId": "ns.urgency",
+                          "vizId": "urgency-display"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }       
+        ]
+      },
+      "texts": [
+        {
+          "locale": "en",
+          "textDictionary": {
+            "title": "Master Data",
+            "description": "Master Data Maintenance",
+            "row1Title": "Master Data Tools"
+          }
+        },
+        {
+          "locale": "",
+          "textDictionary": {
+            "title": "Master Data",
+            "description": "Master Data Maintenance",
+            "row1Title": "Master Data Tools"
+          }
+        }
+      ]
+    },    
+    {
+      "_version": "3.2",
+      "identification": {
+        "id": "incidentSite",
+        "entityType": "site"
+      },
+      "payload": {
+        "siteConfig": {
+          "title": "Incident Management Site with CDM",
+          "alias": "incidentsSite",
+          "displaySettings": {
+            "launchpadViewMode": "SpacesAndWorkPages"
+          },
+          "userCapabilities": {
+            "supportedLanguages": [
+              "en", "de"
+            ]
+          },
+          "browserSettings": {
+            "asynchronousModuleLoading": true
+          }
+        }
+      }
     }
 ]
